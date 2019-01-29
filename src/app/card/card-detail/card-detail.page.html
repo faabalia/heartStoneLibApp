@@ -1,6 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{card?.name}}</ion-title>
+    <ion-buttons slot="start">
+    	<ion-back-button defaultHref="/">
+    	</ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +19,7 @@
 				<p [innerHTML]="card?.text"></p>
 				<b>{{card?.flavour}}</b>
 				<ion-card-title>
-					Stats
+					<span class="card-stats-title">Stats</span>
 				</ion-card-title>
 				<p *ngIf="card.health"><b>Health: </b> {{card.health}}</p>
 				<p *ngIf="card.attack"><b>Attack: </b> {{card.attack}}</p>

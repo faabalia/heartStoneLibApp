@@ -6,7 +6,8 @@ import {Card} from '../shared/card.model';
 
 @Component({
   selector: 'app-card-detail',
-  templateUrl: './card-detail.page.html'
+  templateUrl: './card-detail.page.html',
+  styleUrls: ['./card-detail.page.scss']
 })
 export class CardDetailPage {
 
