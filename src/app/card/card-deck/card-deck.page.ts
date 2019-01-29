@@ -32,4 +32,8 @@ export class CardDeckPage {
 		});
 	}
 
+	generateUrl(cardDeckGroup: string, cardDeck: string): string {
+		return `/tabs/(card:card/${cardDeckGroup}/${cardDeck})`;
+	}
+
 }
