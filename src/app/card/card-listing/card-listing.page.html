@@ -16,7 +16,7 @@
 				</ion-card-title>
 			</ion-card-header>
 			<ion-card-content>
-				<div>{{card.text}}</div>
+				<div [innerHTML]="card.text"></div>
 				<ion-button [href]="'/tabs/(card:card/' + card.cardId + ')'" size="medium" expand="full">
 					See Detail
 				</ion-button>

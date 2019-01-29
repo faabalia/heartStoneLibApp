@@ -16,6 +16,10 @@ export class CardService {
 		this.headers = new HttpHeaders({'X-Mashape-Key': this.API_KEY});
 	}
 
+	public replaceCardTextLine(text: string) {
+		return text ? text.replace(new RegExp("\\\\n", "g"), " ") : "No Description";
+	}
+
 	public getAllCardDecks(): Observable<CardDeck[]> {
 		return this.http.get<CardDeck[]>(`${this.HS_API_URL}/info`, {headers: this.headers});
 

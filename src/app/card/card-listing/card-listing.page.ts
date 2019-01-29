@@ -23,8 +23,11 @@ export class CardListingPage {
   	this.cardDeck = this.route.snapshot.paramMap.get('cardDeck');
 
   	this.cardService .getCardsByDeck(this.cardDeckGroup, this.cardDeck).subscribe(
-  		(cards: Card[]) => {
-  			this.cards = cards; 
+  		(cards: Card[]) => { 
+  			this.cards = cards.map((card: Card) => {
+            	card.text = this.cardService.replaceCardTextLine(card.text);
+            	return card;
+          	});
   		}
 	);
   }

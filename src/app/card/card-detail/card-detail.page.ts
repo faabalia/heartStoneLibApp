@@ -20,7 +20,10 @@ export class CardDetailPage {
 
     this.cardService.getCardById(cardId).subscribe(
         (card: Card[]) => {
-          this.card = card[0];
+          this.card = card.map((card: Card) => {
+            card.text = this.cardService.replaceCardTextLine(card.text);
+            return card;
+          })[0];
         }
       );
   }
