@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {CardService} from '../shared/card.service';
 
+import {Card} from '../shared/card.model';
+
 @Component({
   selector: 'app-card-listing',
   templateUrl: './card-listing.page.html',
@@ -11,7 +13,7 @@ export class CardListingPage {
 
 	cardDeckGroup: string;
 	cardDeck: string;
-	cards: any[] = [];
+	cards: Card[] = [];
 
   constructor(private route: ActivatedRoute, 
   			  private cardService: CardService) { }
@@ -21,8 +23,8 @@ export class CardListingPage {
   	this.cardDeck = this.route.snapshot.paramMap.get('cardDeck');
 
   	this.cardService .getCardsByDeck(this.cardDeckGroup, this.cardDeck).subscribe(
-  		(cards) => {
-  			this.cards = cards;
+  		(cards: Card[]) => {
+  			this.cards = cards; 
   		}
 	);
   }
