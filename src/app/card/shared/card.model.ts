@@ -8,14 +8,19 @@ export interface CardDeck {
 export interface Card {
 	cardId: string;
 	cardSet: string;
-	dbfId: string;
-	health: number;
 	img: string;
 	imgGold: string;
-	locale: string;
 	name: string;
-	playerClass: string;
+
+	cost: number;
+	attack: number;
+	health: number;
 	rarity: string;
 	type: string;
+
+	dbfId: string;
+	faction: string;
+	playerClass: string;
+	locale: string;
 	text: string;
 }
