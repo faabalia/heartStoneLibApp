@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
+import {LoadingController} from '@ionic/angular';
 import {CardService} from '../shared/card.service';
 
 import {Card} from '../shared/card.model';
@@ -13,11 +14,27 @@ export class CardDetailPage {
 
   card: Card;
 
-  constructor(private route: ActivatedRoute, 
-  			  private cardService: CardService) { }
+  loader: any;
 
-  ionViewWillEnter() {
+  constructor(private route: ActivatedRoute, 
+  			  private cardService: CardService, 
+          private loadingCtrl: LoadingController) { }
+
+  private async presentLoading() {
+    const loader = await this.loadingCtrl.create({
+      content: 'Loading',
+      translucent: true
+    });
+
+    loader.present();
+
+    return loader;
+  }
+
+  async ionViewWillEnter() {
     const cardId = this.route.snapshot.paramMap.get('cardId');
+
+    this.loader = await this.presentLoading();
 
     this.cardService.getCardById(cardId).subscribe(
         (card: Card[]) => {
@@ -25,6 +42,8 @@ export class CardDetailPage {
             card.text = this.cardService.replaceCardTextLine(card.text);
             return card;
           })[0];
+
+          this.loader.dismiss();
         }
       );
   }
