@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {LoaderService} from '../../shared/service/loader.service';
 import {CardService} from '../shared/card.service';
+import {AlertService} from '../../shared/service/alert.service';
 
 import {Card} from '../shared/card.model';
 
@@ -18,7 +19,8 @@ export class CardDetailPage {
 
   constructor(private route: ActivatedRoute, 
   			  private cardService: CardService, 
-          private loaderService: LoaderService) { }
+          private loaderService: LoaderService,
+          private alertService: AlertService) { }
 
   ionViewWillEnter() {
     const cardId = this.route.snapshot.paramMap.get('cardId');
