@@ -22,10 +22,10 @@ export class CardDetailPage {
           private loaderService: LoaderService,
           private alertService: AlertService) { }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     const cardId = this.route.snapshot.paramMap.get('cardId');
 
-    this.loaderService.presentLoading();
+    await this.loaderService.presentLoading();
 
     this.cardService.getCardById(cardId).subscribe(
         (card: Card[]) => {

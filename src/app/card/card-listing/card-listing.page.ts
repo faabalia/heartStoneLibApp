@@ -24,8 +24,8 @@ export class CardListingPage {
   			  private loaderService: LoaderService,
   			  private toaster: ToastService) { }
 
-  private getCards() {
-  	this.loaderService.presentLoading();
+  private async getCards() { 
+  	await this.loaderService.presentLoading();
 
   	this.cardService .getCardsByDeck(this.cardDeckGroup, this.cardDeck).subscribe(
   		(cards: Card[]) => { 
