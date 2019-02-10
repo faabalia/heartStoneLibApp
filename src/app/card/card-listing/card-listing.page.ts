@@ -16,6 +16,7 @@ export class CardListingPage {
 	cardDeckGroup: string;
 	cardDeck: string;
 	cards: Card[] = [];
+  copyOfCards: Card[] = [];
 
 	loader: any;
 
@@ -35,6 +36,8 @@ export class CardListingPage {
             	return card;
           	});
 
+            this.copyOfCards = Array.from(this.cards);
+
           	this.loaderService.dismissLoading();
   		}, () => {
   					this.loaderService.dismissLoading();
@@ -53,6 +56,10 @@ export class CardListingPage {
   doRefresh(event) {
   	this.getCards();
   	event.target.complete();
+  }
+
+  hydrateCards(cards: Card[]) {
+    this.cards = cards;
   }
 
 }
